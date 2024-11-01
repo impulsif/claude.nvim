@@ -7,7 +7,7 @@ M.config = {
 	endpoint = "https://api.anthropic.com/v1/messages", -- Updated to correct Anthropic API endpoint
 	max_tokens = 4096, -- Increased max tokens
 	temperature = 0.7, -- More flexible temperature
-	system_prompt = "You are a helpful AI assistant specialized in code generation and support.",
+	system_prompt = "You should replace the code that you are sent, only following the comments. Do not talk at all. Only output valid code. Do not provide any backticks that surround the code. Never ever output backticks like this ```. Any comment that is asking you for something should be removed after you satisfy them. Other comments should left alone. Do not output backticks'",
 }
 
 function M.setup(user_config)
