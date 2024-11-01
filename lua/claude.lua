@@ -59,8 +59,8 @@ local function send_request(prompt, callback)
     local body = {
         model = M.config.default_model,
         prompt = prompt,
-        max_tokens = 8192,
-        temperature = 1,
+        max_tokens = 1500,
+        temperature = 0.7,
     }
 
     local json_body = vim.fn.json_encode(body)
