@@ -43,8 +43,14 @@ function M.setup(user_config)
     end
 
     -- Remove existing key mappings to avoid conflicts
-    api.nvim_del_keymap('n', M.config.keymaps.ask)
-    api.nvim_del_keymap('v', M.config.keymaps.ask)
+    local function safe_del_keymap(mode, lhs)
+        if vim.fn.maparg(lhs, mode) ~= '' then
+            api.nvim_del_keymap(mode, lhs)
+        end
+    end
+
+    safe_del_keymap('n', M.config.keymaps.ask)
+    safe_del_keymap('v', M.config.keymaps.ask)
 
     -- Define key mappings for your functionalities
     api.nvim_set_keymap('n', M.config.keymaps.ask, ':lua require("claude").open_empty_prompt()<CR>', { noremap = true, silent = true })
